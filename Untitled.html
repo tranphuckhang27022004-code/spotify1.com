@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Premium: ********* Music</title><!-- Custom CSS for Design Quality, Mobile-First, and Spotify Branding -->
+    <style>
+        /* CSS Variables */
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-dark: #191414;
+            --text-light: #FFFFFF;
+            --text-muted: #B3B3B3;
+            --font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        /* Base Styles & Typography */
+        body {
+            font-family: var(--font-family);
+            background-color: var(--spotify-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(25, 20, 20, 0.95);
+            padding: 0.75rem 0;
+            z-index: 50;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--spotify-green);
+            text-decoration: none;
+            margin-right: 2rem;
+        }
+
+        /* Main Menu Styling */
+        .main-menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+            justify-content: flex-start;
+        }
+
+        .main-menu li {
+            margin-right: 1.5rem;
+        }
+
+        .main-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            transition: color 0.2s;
+        }
+
+        .main-menu a:hover {
+            color: var(--spotify-green);
+        }
+
+        .cta-nav {
+            background-color: var(--spotify-green);
+            color: var(--spotify-dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        .cta-nav:hover {
+            background-color: #1ED760;
+            transform: translateY(-1px);
+        }
+
+        /* Generic Section Styling */
+        section {
+            padding: 5rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 4rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--spotify-dark) 0%, #000000 100%);
+            padding: 8rem 0 5rem 0;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-title span {
+            color: var(--spotify-green);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-main {
+            background-color: var(--spotify-green);
+            color: var(--spotify-dark);
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(29, 185, 84, 0.6);
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-main:hover {
+            background-color: #1ED760;
+            box-shadow: 0 10px 30px rgba(29, 185, 84, 0.8);
+            transform: translateY(-2px);
+        }
+
+        /* Value Proposition Section (Features) */
+        #value-proposition {
+            background-color: #000000;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .feature-card {
+            background-color: #282828;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--spotify-green);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(29, 185, 84, 0.2);
+        }
+
+        .feature-icon {
+            fill: var(--spotify-green);
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+        }
+
+        /* Review Section */
+        #reviews {
+            background-color: var(--spotify-dark);
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-box {
+            background-color: #282828;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--spotify-green);
+            text-align: left;
+        }
+
+        .testimonial-box blockquote {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-box footer {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--spotify-green);
+            display: block;
+            margin-top: 1rem;
+        }
+
+        /* About Section */
+        #about-section {
+            background-color: #121212;
+            text-align: left;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .about-content h3 {
+            font-size: 1.8rem;
+            color: var(--spotify-green);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: #000000;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .price-card {
+            background-color: #282828;
+            padding: 1.5rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 280px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s, border 0.3s;
+            cursor: pointer;
+            /* Indicate it's clickable */
+        }
+
+        /* Highlight the featured plan */
+        .price-card.featured {
+            border: 3px solid var(--spotify-green);
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(29, 185, 84, 0.4);
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            color: var(--spotify-green);
+        }
+
+        .price-card .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .price-card .price small {
+            font-size: 1.25rem;
+            font-weight: normal;
+        }
+
+        .price-card ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .price-card ul li {
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .price-card ul li::before {
+            content: '✓';
+            color: var(--spotify-green);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .cta-plan {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--spotify-green);
+            color: var(--spotify-dark);
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .price-card:not(.featured) .cta-plan {
+            background-color: #555;
+            color: var(--text-light);
+        }
+
+        .price-card:not(.featured) .cta-plan:hover {
+            background-color: #777;
+        }
+
+        .price-card.featured .cta-plan {
+            background-color: #1ED760;
+        }
+
+        .price-card.featured .cta-plan:hover {
+            background-color: #1AA34A;
+        }
+
+        /* Payment Form Styles (CRITICAL: Initially hidden, uses max-height/opacity for smooth slide down) */
+        #payment-section {
+            background-color: #121212;
+            padding: 0;
+            /* Set padding to 0 when inactive */
+            margin-top: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(29, 185, 84, 0.1);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            max-height: 0;
+            /* Hidden state */
+            opacity: 0;
+            transition: max-height 0.7s ease-in-out, opacity 0.5s ease, padding 0.7s ease-in-out;
+            border: 0px solid transparent;
+            /* Hidden border */
+        }
+
+        #payment-section.active {
+            max-height: 1000px;
+            /* Visible state (large enough to fit content) */
+            opacity: 1;
+            padding: 2rem;
+            /* Restore padding when active */
+            border: 2px solid var(--spotify-green);
+            /* Visible border */
+        }
+
+        #payment-form h3 {
+            font-size: 2rem;
+            color: var(--spotify-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 8px;
+            color: var(--text-light);
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        /* Make select element look better on dark background */
+        .form-group select {
+            appearance: none;
+            /* Remove default arrow on some browsers */
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.8rem center;
+            padding-right: 2.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row>div {
+            flex: 1;
+        }
+
+        .submit-button {
+            background-color: var(--spotify-green);
+            color: var(--spotify-dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #1ED760;
+        }
+
+        /* Footer (Contact Info) */
+        footer {
+            background-color: #000000;
+            padding: 3rem 0;
+            border-top: 1px solid #333;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        footer h4 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li a,
+        footer p {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            transition: color 0.3s;
+        }
+
+        footer ul li a:hover {
+            color: var(--spotify-green);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* Pop-up Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: var(--spotify-dark);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            position: relative;
+            border: 3px solid var(--spotify-green);
+            animation: slide-in 0.5s ease-out;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Chat Function */
+        #chat-bubble {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--spotify-green);
+            color: var(--spotify-dark);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s;
+        }
+
+        #chat-bubble:hover {
+            transform: scale(1.05);
+        }
+
+        #chat-widget {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background-color: #282828;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+            z-index: 98;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: var(--spotify-green);
+            color: var(--spotify-dark);
+            padding: 0.8rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chat-body {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chat-input {
+            padding: 0.8rem;
+            border-top: 1px solid #333;
+        }
+
+        .chat-input input {
+            width: 100%;
+            padding: 0.6rem;
+            border-radius: 5px;
+            border: none;
+            background-color: #333;
+            color: var(--text-light);
+            outline: none;
+        }
+
+        .message-user,
+        .message-agent {
+            margin-bottom: 0.5rem;
+        }
+
+        .message-agent {
+            text-align: left;
+        }
+
+        .message-user {
+            text-align: right;
+        }
+
+        .message-agent span {
+            background-color: #333;
+            color: var(--text-light);
+            padding: 0.5rem 0.75rem;
+            border-radius: 10px 10px 10px 0;
+            display: inline-block;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message-user span {
+            background-color: var(--spotify-green);
+            color: var(--spotify-dark);
+            padding: 0.5rem 0.75rem;
+            border-radius: 10px 10px 0 10px;
+            display: inline-block;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo-text {
+                flex-basis: 100%;
+                text-align: center;
+                margin-bottom: 0.5rem;
+                margin-right: 0;
+            }
+
+            .main-menu {
+                flex-basis: 100%;
+                justify-content: space-around;
+                margin-bottom: 0.5rem;
+            }
+
+            .cta-nav {
+                flex-basis: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .feature-grid,
+            .testimonial-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card {
+                max-width: none;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body><!-- 1. Logo & Navigation -->
+    <header>
+        <div class="container navbar"><a href="#hero" class="logo-text">&nbsp;Spotify Premium&nbsp;</a> <!-- Main Navigation Menu -->
+            <ul class="main-menu">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#value-proposition">***** Proposition</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#about-section">About</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul><!-- CTA Button --> <button class="cta-nav">&nbsp;Get Started&nbsp;</button>
+        </div>
+    </header>
+    <main><!-- 2. Hero Section -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1 class="hero-title">Unlimited Music.<br><span class="spotify-green-text">NO ADS.</span></h1>
+                <h2 class="hero-subtitle">******* to ******* and unlock *** ****** audio experience. **Instantly stream millions of songs, ad-free, *** offline**&mdash;the way music ** meant to ** enjoyed.</h2><!-- CTA Main Button --> <button class="cta-main">&nbsp;GET 1 MONTH FREE&nbsp;</button>
+                <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.8rem;">$4.99/***** thereafter (Student Plan). Terms and conditions apply.</p>
+            </div>
+        </section><!-- 3. Value Proposition (Features) -->
+        <section id="value-proposition" class="section">
+            <div class="container">
+                <h2>Why Go Premium?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg">&nbsp;<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"></path>&nbsp;</svg>
+                        <h3>Ad-Free Listening</h3>
+                        <p>***** continuous music ******* commercial interruptions. A seamless experience that never stops.</p>
+                    </div>
+                    <div class="feature-card"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg">&nbsp;<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm4-9h-3V5h-2v6H8l4 4 4-4z"></path>&nbsp;</svg>
+                        <h3>Offline Playback</h3>
+                        <p>******** your favorite songs and playlists to ****** anywhere, anytime, even without Wi-Fi.</p>
+                    </div>
+                    <div class="feature-card"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg">&nbsp;<path d="M3 10h1v4H3v-4zm2 0h1v4H5v-4zm15-2h1v8h-1v-8zm-2 0h1v8h-1v-8zM7 2v20h2V2H7zm4 8h2v4h-2v-4zm4-4h2v12h-2V6z"></path>&nbsp;</svg>
+                        <h3>High ******* Audio</h3>
+                        <p>Experience crystal ***** ***** quality (up to 320kbps). Hear the ******* you&apos;ve been missing.</p>
+                    </div>
+                    <div class="feature-card"><svg class="feature-icon" xmlns="http://www.w3.org/2000/svg">&nbsp;<path d="M10 17l5-5-5-5v10zM5 17h2V7H5v10zm12 0h2V7h-2v10z"></path>&nbsp;</svg>
+                        <h3>********* Skips</h3>
+                        <p>Total control over your music. Skip ** many tracks as you like across all your devices.</p>
+                    </div>
+                </div>
+            </div>
+        </section><!-- 4. Review Section -->
+        <section id="reviews">
+            <div class="container">
+                <h2>What *** Users Say</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-box">
+                        <blockquote>&quot;Upgrading to Premium *** the best decision for ** daily commute. *** sound quality is incredible, and ****** zero ads makes my listening experience truly relaxing.&quot;</blockquote>
+                        <footer>&mdash; Alex K., Developer</footer>
+                    </div>
+                    <div class="testimonial-box">
+                        <blockquote>&quot;The ****** plan ** a lifesaver. ** **** money, everyone **** their own ad-free account, and the offline downloads stop me from worrying about mobile data usage anymore.&quot;</blockquote>
+                        <footer>&mdash; Sarah M., Parent &amp; Teacher</footer>
+                    </div>
+                    <div class="testimonial-box">
+                        <blockquote>&quot;** a student, the ******* Student ******** is unbeatable. High-quality audio for studying and unlimited skips *** workouts&mdash;it keeps ** focused and relaxed for cheap.&quot;</blockquote>
+                        <footer>&mdash; Ben R., University Student</footer>
+                    </div>
+                </div>
+            </div>
+        </section><!-- 5. About Section -->
+        <section id="about-section" class="section">
+            <div class="container about-content">
+                <h2>***** Spotify</h2>
+                <p>******* is the world&apos;s **** popular audio ********* subscription service with millions ** tracks and podcasts. Our mission ** to unlock the ********* ** ***** creativity by ****** ******** of artists *** opportunity to live off ***** *** and billions of fans *** ****** ** enjoy and be inspired ** it.</p>
+                <p>Founded ** 2006, we have revolutionized the way people ****** to music. With Premium, we are committed to delivering an uninterrupted, high-quality listening experience on ***** device *** use. We are more **** just a music app; we are a platform ********** artists and fans globally.</p>
+                <h3>*** Commitment</h3>
+                <p>** constantly strive ** provide cutting-edge technology *** *** ******* content library. User satisfaction is our top priority, *** we continuously improve our Premium plans to meet your ******** music consumption needs.</p>
+            </div>
+        </section><!-- 6. Pricing & Call-to-Action -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2>Find **** Perfect Premium Plan</h2>
+                <div class="pricing-grid"><!-- Card 1: Free (Unclickable for payment, just confirmation) -->
+                    <div class="price-card" id="card-free">
+                        <p style="color: var(--text-muted); font-weight: bold; margin-bottom: 0.5rem;">BASIC</p>
+                        <h3>Free</h3>
+                        <p class="price">$0.00<small>&nbsp;/ month</small></p>
+                        <hr style="border: 1px solid #444; margin: 1.5rem 0;">
+                        <ul>
+                            <li>Shuffle play</li>
+                            <li>Ads included</li>
+                            <li>No ******* listening</li>
+                            <li>Standard quality audio</li>
+                        </ul><button class="cta-plan">&nbsp;SIGN UP *** FREE&nbsp;</button>
+                    </div><!-- Card 2: Student (Clickable) -->
+                    <div class="price-card featured" id="card-student">
+                        <p style="color: red; font-weight: bold; margin-bottom: 0.5rem;">BEST VALUE</p>
+                        <h3>Student</h3>
+                        <p class="price">$4.99<small>&nbsp;/ month</small></p>
+                        <hr style="border: 1px solid #444; margin: 1.5rem 0;">
+                        <ul>
+                            <li>1 Premium account</li>
+                            <li>Ad-free listening</li>
+                            <li>Offline ***** downloads</li>
+                            <li>Exclusive student discount</li>
+                        </ul><button class="cta-plan">&nbsp;CHOOSE ******* PLAN&nbsp;</button>
+                    </div><!-- Card 3: Duo (Clickable) -->
+                    <div class="price-card" id="card-duo">
+                        <p style="color: var(--text-muted); font-weight: bold; margin-bottom: 0.5rem;">*** TWO</p>
+                        <h3>Duo</h3>
+                        <p class="price">$12.99<small>&nbsp;/ month</small></p>
+                        <hr style="border: 1px solid #444; margin: 1.5rem 0;">
+                        <ul>
+                            <li>2 Premium accounts</li>
+                            <li>Duo Mix: ****** playlist</li>
+                            <li>Ad-free, offline, ********* skips</li>
+                            <li>For two people living at the **** address</li>
+                        </ul><button class="cta-plan">&nbsp;CHOOSE *** PLAN&nbsp;</button>
+                    </div><!-- Card 4: Family (Clickable) -->
+                    <div class="price-card" id="card-family">
+                        <p style="color: var(--text-muted); font-weight: bold; margin-bottom: 0.5rem;">MOST CONVENIENT</p>
+                        <h3>Family</h3>
+                        <p class="price">$15.99<small>&nbsp;/ month</small></p>
+                        <hr style="border: 1px solid #444; margin: 1.5rem 0;">
+                        <ul>
+                            <li>** to 6 Premium accounts</li>
+                            <li>Block explicit music</li>
+                            <li>Access ** ******* Kids</li>
+                            <li>Family Mix: Playlist for *** family</li>
+                        </ul><button class="cta-plan">&nbsp;CHOOSE FAMILY PLAN&nbsp;</button>
+                    </div>
+                </div><!-- Payment Form Section (Will appear on plan selection) -->
+                <div id="payment-section">
+                    <form id="payment-form">
+                        <h3 id="payment-title">Checkout: Student Plan ($4.99/month)</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 2rem;">Please fill ** your personal *** payment ******* to ******** your Premium subscription.</p><!-- Personal Information -->
+                        <h4 style="font-size: 1.3rem; color: var(--text-light); margin-top: 2rem; margin-bottom: 1rem; text-align: left;">Personal Information</h4>
+                        <div class="form-row">
+                            <div class="form-group"><label for="firstName">First Name</label> <input type="text" id="firstName" name="firstName" required=""></div>
+                            <div class="form-group"><label for="lastName">Last Name</label> <input type="text" id="lastName" name="lastName" required=""></div>
+                        </div>
+                        <div class="form-group"><label for="email">Email Address</label> <input type="email" id="email" name="email" required=""></div><!-- Payment Information (Simplified for demo) -->
+                        <h4 style="font-size: 1.3rem; color: var(--text-light); margin-top: 2rem; margin-bottom: 1rem; text-align: left;">Payment Details</h4>
+                        <div class="form-group"><label for="cardNumber">Card Number</label> <input type="text" id="cardNumber" name="cardNumber" pattern="\d{16}" placeholder="16 digits" required=""></div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="expiryDate">****** Date (MM/YY)</label> <input type="text" id="expiryDate" name="expiryDate" pattern="\d{2}/\d{2}" placeholder="MM/YY" required=""></div>
+                            <div class="form-group"><label for="cvv">CVV</label> <input type="text" id="cvv" name="cvv" pattern="\d{3,4}" placeholder="3 or 4 digits" required=""></div>
+                        </div>
+                        <div class="form-group"><label for="country">Country/Region</label> <select id="country" name="country" required="">&nbsp;<option value="" disabled="" selected="">Select Country</option>
+                                <option value="us">United States</option>
+                                <option value="ca">Canada</option>
+                                <option value="gb">United Kingdom</option>
+                                <option value="vn">Vietnam</option>
+                                <option value="other">Other</option>&nbsp;
+                            </select></div><button type="submit" class="submit-button" style="margin-top: 2rem;">&nbsp;SUBSCRIBE TO PREMIUM&nbsp;</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main><!-- 7. Contact us (Footer) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">*** *** Record</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Communities</h4>
+                    <ul>
+                        <li><a href="#">For Artists</a></li>
+                        <li><a href="#">Developers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><a href="#">Support Center</a></li>
+                        <li><a href="mailto:support@spotify.com">Email: support@spotify.com</a></li>
+                        <li>
+                            <p>Phone: +1-800-456-7890</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Spotify AB. ***** &amp; Conditions | Privacy Policy</p>
+            </div>
+        </div>
+    </footer><!-- 8. Pop-up (Exclusive Offer) -->
+    <div id="popup-offer" class="modal-overlay">
+        <div class="modal-content"><button id="close-popup" class="modal-close">&times;</button>
+            <h4 style="font-size: 1.8rem; font-weight: 900; color: var(--spotify-green); margin-bottom: 0.5rem;">HOT OFFER!</h4>
+            <p style="color: var(--text-light); margin-bottom: 1.5rem;">Sign ** *** the Student plan now *** get **** extra ***** free**&mdash;2 months free in total! (Limited **** only).</p><button class="cta-main" style="padding: 0.75rem 2rem; font-size: 1rem;">&nbsp;GET 2 ****** FREE&nbsp;</button>
+        </div>
+    </div><!-- 9. Chat function -->
+    <p><button id="chat-bubble">&nbsp;<svg fill="currentColor" width="24" height="24" xmlns="http://www.w3.org/2000/svg">&nbsp;<path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"></path>&nbsp;</svg>&nbsp;</button></p>
+    <div id="chat-widget">
+        <div class="chat-header"><span>******* Support</span> <button style="background: none; border: none; color: var(--spotify-dark); font-weight: bold; cursor: pointer;">&nbsp;X&nbsp;</button></div>
+        <div id="chat-body" class="chat-body"><!-- Initial message by agent -->
+            <div class="message-agent"><span>Hello! How can I help *** with your ******* subscription today?</span></div>
+        </div>
+        <div class="chat-input"><input type="text" id="chat-input" placeholder="Type your message..."></div>
+    </div><!-- 10. Confirmation Modal (Instead of alert()) -->
+    <div id="confirmation-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h4 style="font-size: 1.8rem; font-weight: 900; color: var(--spotify-green); margin-bottom: 0.5rem;">Thank You!</h4>
+            <p id="confirmation-text" style="color: var(--text-light); margin-bottom: 1.5rem;">Your ************ for *** Student **** has been successfully processed. Welcome ** Premium!</p><button class="cta-main" style="padding: 0.75rem 2rem; font-size: 1rem;">&nbsp;CLOSE&nbsp;</button>
+        </div>
+    </div><!-- JavaScript for Functionality -->
+    <script>
+        // Store the currently selected plan
+        let currentPlan = 'Student';
+        
+        // Custom function to scroll smoothly to a section, accounting for the sticky header
+        function scrollToSection(selector) {
+            const element = document.querySelector(selector);
+            if (element) {
+                // Determine the scroll position, subtracting the header height (approx 80px)
+                const yOffset = -80; 
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+        
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('popup-offer');
+            const closePopup = document.getElementById('close-popup');
+            const chatBubble = document.getElementById('chat-bubble');
+            const chatWidget = document.getElementById('chat-widget');
+            const chatInput = document.getElementById('chat-input');
+            
+            // Initial call to set the default form title (since Student is featured)
+            updatePaymentFormTitle('Student', '4.99');
+        
+            // --- 1. Pop-up Logic ---
+            setTimeout(() => {
+                // Check if the popup has been closed before to prevent showing it again
+                if (localStorage.getItem('popup-closed') !== 'true') {
+                    popup.classList.add('active');
+                }
+            }, 5000); // Show after 5 seconds
+        
+            closePopup.addEventListener('click', () => {
+                popup.classList.remove('active');
+                localStorage.setItem('popup-closed', 'true');
+            });
+            
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.classList.remove('active');
+                    localStorage.setItem('popup-closed', 'true');
+                }
+            });
+        
+            // --- 2. Chat Function Logic ---
+            chatBubble.addEventListener('click', () => {
+                chatWidget.style.display = (chatWidget.style.display === 'flex' ? 'none' : 'flex');
+                if (chatWidget.style.display === 'flex') {
+                    chatInput.focus();
+                }
+            });
+        
+            const chatBody = document.getElementById('chat-body');
+        
+            chatInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' && this.value.trim() !== '') {
+                    const userMessage = this.value.trim();
+                    appendMessage('user', userMessage);
+                    this.value = '';
+                    simulateAgentResponse(userMessage);
+                }
+            });
+        
+            function appendMessage(sender, text) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add(sender === 'user' ? 'message-user' : 'message-agent');
+                messageDiv.innerHTML = `<span>${text}</span>`;
+                chatBody.appendChild(messageDiv);
+                chatBody.scrollTop = chatBody.scrollHeight; // Auto-scroll to bottom
+            }
+        
+            function simulateAgentResponse(userText) {
+                const lowerText = userText.toLowerCase();
+                let responseText = "Sorry, I didn't catch that. Please ask about our Premium plans (Free, Student, Duo, Family) or key features (ad-free, offline play).";
+        
+                if (lowerText.includes('free')) {
+                    responseText = "The Free plan costs $0.00, includes shuffle play, has ads, and no offline feature. Would you like to upgrade to Premium?";
+                } else if (lowerText.includes('student')) {
+                    responseText = "The Student plan is only $4.99/month. It's the full-featured Premium plan available for eligible students.";
+                } else if (lowerText.includes('duo')) {
+                    responseText = "The Duo plan ($12.99/month) is for two people living at the same address. Both get ad-free Premium access!";
+                } else if (lowerText.includes('family')) {
+                    responseText = "The Family plan ($15.99/month) supports up to 6 Premium accounts, making it a great value for the whole family.";
+                } else if (lowerText.includes('ad-free') || lowerText.includes('ads')) {
+                    responseText = "All Premium plans (Student, Duo, Family) are completely ad-free. Subscribe now for uninterrupted listening!";
+                } else if (lowerText.includes('offline') || lowerText.includes('download')) {
+                    responseText = "The offline feature (music downloads) is available on all paid Premium plans (Student, Duo, Family).";
+                }
+        
+                setTimeout(() => {
+                    appendMessage('agent', responseText);
+                }, 1000); // Simulate network delay
+            }
+        });
+        
+        // --- 3. Payment Form Logic (Updated) ---
+        function updatePaymentFormTitle(planName, price) {
+            const titleElement = document.getElementById('payment-title');
+            titleElement.textContent = `Checkout: ${planName} Plan ($${price}/month)`;
+            currentPlan = planName;
+        }
+        
+        function selectPlan(planName, price) {
+            const paymentSection = document.getElementById('payment-section');
+            
+            // 1. Update the form title with the selected plan details
+            updatePaymentFormTitle(planName, price);
+            
+            // 2. Remove highlight from all cards
+            document.querySelectorAll('.price-card').forEach(card => {
+                card.classList.remove('featured');
+            });
+        
+            // 3. Handle Free plan: Confirmation only, no payment form needed
+            if (planName === 'Free') {
+                 // Hide payment form smoothly
+                 paymentSection.classList.remove('active');
+                 // Highlight the Free card
+                 document.getElementById('card-free').classList.add('featured');
+                 showConfirmation(`Your Free plan sign-up was successful. Please check your email for account verification.`, 'Free Plan Activated');
+                 return;
+            }
+        
+            // 4. Handle Paid Plans: Show payment form
+            
+            // Highlight the selected paid card
+            document.getElementById(`card-${planName.toLowerCase()}`).classList.add('featured');
+        
+            // Reveal the payment form with a smooth transition
+            paymentSection.classList.add('active');
+        
+            // Scroll the user down to the payment form
+            scrollToSection('#payment-section');
+        }
+        
+        // --- 4. Confirmation Message (Instead of alert()) ---
+        function showConfirmation(customMessage = null, customTitle = null) {
+            const firstName = document.getElementById('firstName').value;
+            const confirmationText = document.getElementById('confirmation-text');
+            const confirmationModal = document.getElementById('confirmation-modal');
+            const confirmationTitle = confirmationModal.querySelector('h4');
+            
+            if (customMessage) {
+                 confirmationText.innerHTML = customMessage;
+                 confirmationTitle.textContent = customTitle;
+            } else {
+                 // Update confirmation message for paid plan
+                 confirmationTitle.textContent = 'Thank You!';
+                 confirmationText.innerHTML = `Congratulations, **${firstName}**! Your **${currentPlan}** plan subscription has been successfully processed. Welcome to Premium!`;
+                 
+                 // Clear the form and hide payment section
+                 document.getElementById('payment-form').reset();
+                 document.getElementById('payment-section').classList.remove('active'); 
+            }
+            
+            // Display the modal
+            confirmationModal.classList.add('active');
+        }
+    </script>
+
+<div style="color: red">Word to HTML trial - please <a href="https://wordtohtml.net/site/payment">Go PRO</a> to get whole HTML.</div>
+</body>
+
+</html>
